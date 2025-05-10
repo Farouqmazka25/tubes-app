@@ -84,7 +84,7 @@
 
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-                <p class="mb-3 fw-semibold">Paruq ganteng sekali</p>
+                <p class="mb-3 fw-semibold">adittt tolongin dittttt </p>
                 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -113,7 +113,7 @@
 
                 <div class="text-center">
                     <span class="text-muted">Don't have an account?</span><br>
-                   
+                    
                 </div>
             </form>
         </div>

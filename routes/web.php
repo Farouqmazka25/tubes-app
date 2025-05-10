@@ -26,3 +26,5 @@ Route::get('/dashboardadmin', function () {
 Route::get('/dashboarduser', function () {
     return view('user.dashboarduser');
 })->name('dashboarduser');
+
+
