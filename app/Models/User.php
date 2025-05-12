@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return (bool) $this->roles()->where('name', $role)->first();
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

@@ -78,13 +78,13 @@
         <!-- Login Form -->
         <div class="col-md-6 form-section">
             <div class="text-center">
-                <img src="{{ asset('img/logomykonos .jpeg') }}" class="logo" alt="Logo">
+                <img src="{{ asset('img/logomykonos.jpeg') }}" class="logo" alt="Logo">
 
             </div>
 
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-                <p class="mb-3 fw-semibold">adittt tolongin dittttt </p>
+                <p class="mb-3 fw-semibold">please login </p>
                 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -113,6 +113,9 @@
 
                 <div class="text-center">
                     <span class="text-muted">Don't have an account?</span><br>
+                    <a href="{{ route('register.form') }}" class="text-decoration-none text-primary fw-bold">
+    Sign up here
+</a>    
                     
                 </div>
             </form>

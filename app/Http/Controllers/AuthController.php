@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class AuthController extends Controller
 {
-    // Menampilkan halaman login
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    // Proses login
     public function login(Request $request)
     {
-        // Validasi input
+        // Validasi form
         $request->validate([
-            'email' => 'required|email',    
+            'email' => 'required|email',
             'password' => 'required',
         ], [
             'email.required' => 'Email wajib diisi',
@@ -28,35 +27,59 @@ class AuthController extends Controller
             'password.required' => 'Password wajib diisi',
         ]);
 
-        // Ambil user berdasarkan email
+        // Cari user
         $user = User::where('email', $request->email)->first();
 
-        // Cek apakah user ditemukan dan password cocok
         if ($user && Hash::check($request->password, $user->password)) {
-            Auth::login($user); // Login user
+            Auth::login($user);
 
-            // Cek role dan redirect sesuai dashboard
-            if ($user->role === 'admin') {
+            // Redirect berdasarkan role
+            if ($user->role === 'ADMIN') {
                 return redirect()->route('dashboardadmin');
-            } elseif ($user->role === 'user') {
-                return redirect()->route('dashboarduser');
+            } elseif ($user->role === 'USER') {
+                return redirect()->route('dashboard.user');
             } else {
-                Auth::logout(); // Logout kalau rolenya tidak dikenal
-                return back()->withErrors(['email' => 'Akun tidak memiliki peran yang valid.']);
+                // Jika role tidak dikenali, logout
+                Auth::logout();
+                abort(403, 'Role tidak dikenali');
             }
         }
 
-        // Jika email tidak ditemukan atau password salah
-        return back()->withErrors(['email' => 'Email atau password salah'])->withInput();
+        return back()->withErrors(['email' => 'Email atau password salah']);
     }
 
-    // Logout
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
         return redirect()->route('login.form');
+    }
+
+    public function showRegisterForm()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+            'alamat' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:15',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+            'role' => 'USER',
+        ]);
+
+        Auth::login($user);
+
+        return redirect()->route('dashboard.user');
     }
 }
