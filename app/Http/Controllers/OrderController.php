@@ -57,7 +57,7 @@ class OrderController extends Controller
         // Kosongkan keranjang
         $cart->cartItems()->delete();
 
-        return redirect()->route('dashboard.user')->with('success', 'Checkout berhasil!');
+       return redirect()->route('dashboard.user')->with('success', 'Pembayaran berhasil! Pesanan Anda sedang diproses.');
     }
 
     public function show(Order $order)

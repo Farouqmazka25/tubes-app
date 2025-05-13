@@ -3,17 +3,17 @@
 @section('content')
 <style>
     body {
-        background-color:rgb(255, 255, 255);
+        background-color: #f8f9fa; /* abu muda */
     }
 
     .card-login {
         border-radius: 10px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgb(255, 255, 255  );
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }       
 
     .form-section {
-        background-color:#151C48;
+        background-color: #1e2a38; /* abu gelap */
         color: white;
         padding: 50px;
         display: flex;
@@ -23,38 +23,33 @@
 
     .form-section input.form-control {
         background-color: transparent;
-        border: 1px solid #777;
+        border: 1px solid #ced4da;
         color: white;
     }
 
     .form-section input::placeholder {
-        color: #aaa;
+        color: #dee2e6;
     }
 
     .btn-gradient {
-        background: linear-gradient(to right, #ff6a00, #ee0979);
+        background: linear-gradient(to right, #6c757d, #adb5bd); /* abu netral */
         border: none;
         color: white;
     }
 
-   .btn-gradient {
-    background: linear-gradient(to right, #FF6A00, #EE0979);
-    color: white;
-    }
-
     .btn-outline-custom {
-        border: 1px solid #ff4081;
-        color: #ff4081;
+        border: 1px solid #6c757d;
+        color: #6c757d;
     }
 
     .btn-outline-custom:hover {
-        background-color: #ff4081;
+        background-color: #6c757d;
         color: white;
     }
 
     .gradient-bg {
-        background: linear-gradient(to right, #ff6a00, #ee0979);
-        color: white;
+        background: linear-gradient(to right, #ced4da, #dee2e6); /* abu-abu soft */
+        color: #212529;
         padding: 50px;
         display: flex;
         flex-direction: column;
@@ -78,13 +73,13 @@
         <!-- Login Form -->
         <div class="col-md-6 form-section">
             <div class="text-center">
-                <img src="{{ asset('img/logomykonos.jpeg') }}" class="logo" alt="Logo">
+        
 
             </div>
 
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-                <p class="mb-3 fw-semibold">please login </p>
+             <p class="mb-3 fw-semibold text-center"> login</p>
                 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -107,9 +102,7 @@
 
                 <button class="btn btn-gradient w-100 mb-3" type="submit">LOG IN</button>
 
-                <div class="text-center mb-3">
-                    <a href="#" class="text-decoration-none text-muted">Forgot password?</a>
-                </div>
+                
 
                 <div class="text-center">
                     <span class="text-muted">Don't have an account?</span><br>

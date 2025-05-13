@@ -4,67 +4,78 @@
   <meta charset="UTF-8">
   <title>Registration Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+ <style>
+  * {
+    box-sizing: border-box;
+  }
 
-    body, html {
-      height: 100%;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Abu terang */
+  }
 
-    .gradient-custom {
-      background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-    }
+  .gradient-custom {
+    background-color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
 
-    .card {
-      background: white;
-      border-radius: 15px;
-      padding: 30px;
-      max-width: 500px;
-      width: 100%;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
+  .card {
+    background-color: #1e2a38; /* Navy gelap */
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    color: white;
+  }
 
-    .form-outline {
-      margin-bottom: 1rem;
-    }
+  .form-outline {
+    margin-bottom: 1rem;
+  }
 
-    .form-label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+  }
 
-    .form-control {
-      width: 100%;
-      padding: 10px 15px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+  .form-control {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    color: #212529;
+  }
 
-    .btn {
-      padding: 12px 25px;
-      background-color: #007bff;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+  .form-control::placeholder {
+    color: #6c757d;
+  }
 
-    .btn:hover {
-      background-color: #0056b3;
-    }
-  </style>
+  .btn {
+    padding: 12px 25px;
+    background: linear-gradient(to right, #6c757d, #adb5bd); /* Abu gradasi */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .btn:hover {
+    background: linear-gradient(to right, #5a6268, #a3b0b8);
+  }
+</style>
+
 </head>
 <body>
   <section class="gradient-custom">
