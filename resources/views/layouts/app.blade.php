@@ -92,7 +92,7 @@
     <main>
         @yield('content')
     </main>
-
+        
     {{-- ✅ HIDE FOOTER SAAT LOGIN / REGISTER --}}
     @if (!Request::is('login') && !Request::is('register'))
     <footer class="py-4 text-white mt-auto" style="background-color: #141B24;">

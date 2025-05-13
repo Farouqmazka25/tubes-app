@@ -4,16 +4,22 @@
 
 @section('content')
     <!-- Header -->
-    <header style="background-color: #1e2a38;" class="py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Aroma Eksklusif, Karakter Tak Terlupakan</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Mewakili aroma khas yang berkelas dan membentuk identitas</p>
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Parfum Berkualitas</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Aroma Elegan untuk Hari Anda</p>
+            </div>
+        </div>
+    </header>
+    
+     @if(session('success'))
+    <div class="max-w-xl mx-auto mt-4">
+        <div class="bg-green-100 border border-green-300 text-green-800 px-4 py-2 rounded shadow-sm text-sm flex items-center justify-between">
+            <span>✅ {{ session('success') }}</span>
         </div>
     </div>
-</header>
-
-
+@endif
     <!-- Section: Products -->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -49,3 +55,5 @@
         </div>
     </section>
 @endsection
+
+
