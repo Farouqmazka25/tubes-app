@@ -17,16 +17,22 @@ class AdminOrderController extends Controller
     public function show(Order $order)
     {
         $order->load('items.product', 'user');
-        return view('admin.orders.show', compact('order'));
+        return view('admin.show', compact('order'));
     }
 
-    public function updateStatus(Request $request, Order $order)
-    {
-        $request->validate([
-            'status' => 'required|in:MENUNGGU,DIPROSES,SELESAI,DIBATALKAN'
-        ]);
+   public function updateStatus(Request $request, Order $order)
+{
+    $request->validate([
+        'status' => 'required|in:MENUNGGU,DIPROSES,TERKIRIM',
+        'tracking_number' => 'nullable|string|max:255'
+    ]);
 
-        $order->update(['status' => $request->status]);
-        return redirect()->back()->with('success', 'Status pesanan diperbarui.');
-    }
+    $order->update([
+        'status' => $request->status,
+        'tracking_number' => $request->tracking_number
+    ]);
+
+   return redirect()->route('admin.orders.index')->with('success', 'Status pesanan diperbarui.');
+
+}
 }

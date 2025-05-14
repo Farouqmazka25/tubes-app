@@ -9,8 +9,7 @@
                 <th>ID</th>
                 <th>Nama User</th>
                 <th>Status</th>
-                <th>Total</th>
-                <th>Dibuat</th>
+                <th>Tracking Number</th> 
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -20,8 +19,7 @@
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->user->name ?? '-' }}</td>
                     <td>{{ $order->status }}</td>
-                    <td>Rp{{ number_format($order->total, 0, ',', '.') }}</td>
-                    <td>{{ $order->created_at ? $order->created_at->format('d M Y H:i') : '-' }}</td>
+                    <td>{{ $order->tracking_number ?? '-' }}</td> {{-- Tambahan --}}
                     <td>
                         <a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-sm btn-info">Detail</a>
                     </td>
