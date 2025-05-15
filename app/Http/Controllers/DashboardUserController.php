@@ -9,16 +9,15 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardUserController extends Controller
-{   
-   public function index()
 {
-    $products = Product::all();
-    $user = Auth::user();
+    public function index()
+    {
+        $products = Product::all();
+        $user = Auth::user();
 
-    $cart = Cart::where('user_id', $user->id)->first();
-    $cartCount = $cart ? $cart->cartItems()->sum('quantity') : 0;
+        $cart = Cart::where('user_id', $user->id)->first();
+        $cartCount = $cart ? $cart->cartItems()->sum('quantity') : 0;
 
-    return view('user.dashboarduser', compact('products', 'cartCount'));
+        return view('user.dashboarduser', compact('products', 'cartCount'));
+    }
 }
-}
-

@@ -17,7 +17,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        // Validasi form
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -27,13 +27,11 @@ class AuthController extends Controller
             'password.required' => 'Password wajib diisi',
         ]);
 
-        // Cari user
         $user = User::where('email', $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
             Auth::login($user);
 
-            // Redirect berdasarkan role
             if ($user->role === 'ADMIN') {
                 return redirect()->route('dashboardadmin');
             } elseif ($user->role === 'USER') {
